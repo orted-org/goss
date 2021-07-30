@@ -27,5 +27,5 @@ func StartServer() {
 	} else {
 		SessionTtl = getSessionTTL
 	}
-	e.Logger.Fatal(e.Start(":4000"))
+	e.Logger.Fatal(e.Start(":1211"))
 }
