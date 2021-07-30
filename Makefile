@@ -1,3 +1,3 @@
 watch:
-	cd ./app && ../bin/air
+	cd ./app && sudo ../bin/air
 .PHONY: watch
