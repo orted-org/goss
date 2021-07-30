@@ -1,7 +1,14 @@
-version: "3"
+version: "3.9"
 services:
-  redis:
-    container_name: redis-for-go
-    image: redis
+  goss_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 6379:6379
+      - "1211:1211"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis:6379
+  goss_redis:
+    image: redis

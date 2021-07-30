@@ -2,6 +2,7 @@ package service
 
 import (
 	"errors"
+	"os"
 	"time"
 
 	"github.com/go-redis/redis"
@@ -9,7 +10,7 @@ import (
 )
 
 var RedisClient *redis.Client = redis.NewClient(&redis.Options{
-	Addr:     "localhost:6379",
+	Addr:     os.Getenv("REDIS_URL"),
 	Password: "",
 	DB:       0,
 })
