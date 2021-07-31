@@ -29,7 +29,7 @@ Go to the project directory
 Run
 
 ```bash
-  docker-composer up
+  docker-compose up
 ```
 
 
@@ -67,7 +67,7 @@ Run
 | :-------- | :------- | :-------------------------------- |
 | `sessionId`      | `string` | **Required**. Session ID received on creation of session. |
 
-#### Truncate Store
+#### Truncate Store (Delete All Sessions)
 
 ```http
   DELETE /truncate
