@@ -13,7 +13,7 @@ func getRedisAddr() string {
 	fromEnv := os.Getenv("REDIS_URL")
 	if len(fromEnv) == 0 {
 		// default with reference to the docker service
-		return "localhost:6379"
+		return "goss_redis:6379"
 	}
 	return fromEnv
 }
