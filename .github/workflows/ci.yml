@@ -31,4 +31,5 @@ jobs:
 
       - name: Test
         run: make test
-        env: REDIS_URL: goss_redis:6379
+        env:
+          REDIS_URL: goss_redis:6379
