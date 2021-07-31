@@ -8,4 +8,5 @@ require (
 	github.com/onsi/gomega v1.14.0 // indirect
 	github.com/satori/go.uuid v1.2.0
 	github.com/stretchr/testify v1.7.0
+
 )

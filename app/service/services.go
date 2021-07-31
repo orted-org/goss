@@ -9,8 +9,17 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+func getRedisAddr() string {
+	fromEnv := os.Getenv("REDIS_URL")
+	if len(fromEnv) == 0 {
+		// default with reference to the docker service
+		return "goss_redis:6379"
+	}
+	return fromEnv
+}
+
 var RedisClient *redis.Client = redis.NewClient(&redis.Options{
-	Addr:     os.Getenv("REDIS_URL"),
+	Addr:     getRedisAddr(),
 	Password: "",
 	DB:       0,
 })
