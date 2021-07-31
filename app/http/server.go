@@ -1,12 +1,13 @@
 package http
 
 import (
-	config "goss/app/config"
-	"goss/app/utils"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
+
+	config "github.com/himanshu-sah/goss/app/config"
+	"github.com/himanshu-sah/goss/app/utils"
 
 	"github.com/labstack/echo/v4"
 )

@@ -1,4 +1,4 @@
-module goss
+module github.com/himanshu-sah/goss
 
 go 1.16
 
@@ -7,4 +7,5 @@ require (
 	github.com/labstack/echo/v4 v4.4.0
 	github.com/onsi/gomega v1.14.0 // indirect
 	github.com/satori/go.uuid v1.2.0
+	github.com/stretchr/testify v1.7.0
 )

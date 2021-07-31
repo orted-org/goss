@@ -1,7 +1,7 @@
 package main
 
-import "goss/app/http"
+import "github.com/himanshu-sah/goss/app/http"
 
-func main(){
+func main() {
 	http.StartServer()
 }
