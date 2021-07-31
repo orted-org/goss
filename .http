@@ -1,18 +1,5 @@
 ### DEV Test
-GET http://localhost:4000/dev
-
-### DEV Post
-POST http://localhost:4000/dev-post 
-Content-Type: application/json
-
-{
-    "uid":"sonu",
-    "session":{
-        "role":"author",
-        "paid":["23423","234"]
-    }
-}
-
+GET http://localhost:1211/dev
 
 ### CREATE SESSION 
 POST http://localhost:1211/create-session
@@ -21,11 +8,12 @@ Content-Type: application/json
 {
     "session":{
         "someUser":"Hello"
-    }
+    },
+    "ttl":60
 }
 
 ### GET SESSION
-GET http://localhost:1211/get-session?sessionId=59b96e86-ea76-4b18-ab31-f6248cd65fdd
+GET http://localhost:1211/get-session?sessionId=5778bfb9-aa08-4591-9f01-17ba30ca9b74
 
 
 ### DELETE SESSION

@@ -15,11 +15,11 @@ var RedisClient *redis.Client = redis.NewClient(&redis.Options{
 	DB:       0,
 })
 
-func CreateSession(session string, ttl int) (string, error) {
+func CreateSession(session string, ttl time.Duration) (string, error) {
 	// creating a uuid for session
 	uuid := uuid.NewV4()
 	// storing the session into redis store
-	err := RedisClient.Set(uuid.String(), session, time.Duration(ttl)).Err()
+	err := RedisClient.Set(uuid.String(), session, ttl).Err()
 	if err != nil {
 		return "", nil
 	}

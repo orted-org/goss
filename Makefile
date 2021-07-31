@@ -1,4 +1,4 @@
 # for development hot reload using air 
 watch:
-	cd ./app && sudo ../bin/air
+	./bin/air
 .PHONY: watch
