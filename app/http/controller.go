@@ -3,6 +3,7 @@ package http
 import (
 	"encoding/json"
 	"goss/app/service"
+	"goss/app/utils"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -19,14 +20,18 @@ func CreateSession(c echo.Context) error {
 	if body.Session == nil {
 		return c.JSON(http.StatusBadRequest, GenerateGeneralResponse(http.StatusBadRequest, "Please Provide Session Data"))
 	}
-	if body.TTL == 0 {
-		body.TTL = SessionTtl
+	// setting the default session in case neither ENV is set nor request contains the TTL
+	var ttl = SessionTtl
+	if body.TTL != 0 {
+		// if session is provided in the request
+		ttl = utils.GetTimeFor(body.TTL)
 	}
-	// converting the struct to json
-	session, _ := json.Marshal(body)
+
+	// converting the session data to json
+	session, _ := json.Marshal(body.Session)
 
 	// storing the session into redis store
-	sessionId, err := service.CreateSession(string(session), body.TTL)
+	sessionId, err := service.CreateSession(string(session), ttl)
 	if err != nil {
 		return c.JSON(http.StatusOK, GenerateGeneralResponse(http.StatusInternalServerError, err.Error()))
 	}
@@ -40,13 +45,13 @@ func GetSession(c echo.Context) error {
 	if len(sessionId) == 0 {
 		return c.JSON(http.StatusBadRequest, GenerateGeneralResponse(http.StatusBadRequest, "Session ID missing from query parameter"))
 	}
-	// gettin the data from redis store
+	// getting the data from redis store
 	res, err := service.GetSession(sessionId)
 	if err != nil {
 		return c.JSON(http.StatusNotFound, GenerateGeneralResponse(http.StatusNotFound, err.Error()))
 	}
 	// converting the redis value string to json format
-	var session SessionData
+	var session interface{}
 	json.Unmarshal([]byte(res), &session)
 
 	// retuning json

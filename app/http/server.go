@@ -1,7 +1,8 @@
 package http
 
 import (
-	config2 "goss/app/config"
+	config "goss/app/config"
+	"goss/app/utils"
 	"log"
 	"net/http"
 	"os"
@@ -11,7 +12,7 @@ import (
 )
 
 var (
-	SessionTtl = config2.DEF_SESSION_TTL
+	SessionTtl = config.DEF_SESSION_TTL
 )
 var Logger *log.Logger = log.Default()
 
@@ -25,7 +26,7 @@ func StartServer() {
 	if err != nil {
 		Logger.Print("Session TTL not detected in environment, set to default for 7 days for fallback if session ttl not provided in request")
 	} else {
-		SessionTtl = getSessionTTL
+		SessionTtl = utils.GetTimeFor(getSessionTTL)
 	}
 	e.Logger.Fatal(e.Start(":1211"))
 }
