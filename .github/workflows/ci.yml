@@ -8,12 +8,14 @@ on:
 
 jobs:
   test:
-    name: Build
+    name: Test
     runs-on: ubuntu-latest
 
     services:
       goss_redis:
         image: redis
+        ports:
+          - 6379:6379
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -31,5 +33,3 @@ jobs:
 
       - name: Test
         run: make test
-        env:
-          REDIS_URL: goss_redis:6379
