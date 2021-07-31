@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ### GET SESSION
-GET http://localhost:1211/get?sessionId=ee9857e6-ef72-4883-9e0c-337ce160edf4
+GET http://localhost:1211/get?sessionId=dcfd38bd-7778-4fc1-b45c-c515b2428213
 
 
 ### DELETE SESSION
