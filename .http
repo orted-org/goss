@@ -2,7 +2,7 @@
 GET http://localhost:1211/dev
 
 ### CREATE SESSION 
-POST http://localhost:1211/create-session
+POST http://localhost:1211/create
 Content-Type: application/json
 
 {
@@ -13,8 +13,12 @@ Content-Type: application/json
 }
 
 ### GET SESSION
-GET http://localhost:1211/get-session?sessionId=5778bfb9-aa08-4591-9f01-17ba30ca9b74
+GET http://localhost:1211/get?sessionId=9e93ecf1-5760-40bd-b6f3-4a9b69434a04
 
 
 ### DELETE SESSION
-DELETE http://localhost:1211/delete-session?sessionId=59b96e86-ea76-4b18-ab31-f6248cd65fdd
+DELETE http://localhost:1211/delete?sessionId=59b96e86-ea76-4b18-ab31-f6248cd65fdd
+
+
+### TRUNCATE STORE
+DELETE http://localhost:1211/truncate

@@ -40,7 +40,6 @@ func GetSession(sessionId string) (string, error) {
 }
 
 func DeleteSession(sessionId string) error {
-
 	// checking if session id is present
 	if len(sessionId) == 0 {
 		return errors.New("no session id provided")
@@ -51,5 +50,12 @@ func DeleteSession(sessionId string) error {
 		return errors.New("session could not be deleted")
 	}
 	// session deleted and returning nil error
+	return nil
+}
+func TruncateStore() error {
+	err := RedisClient.FlushAll().Err()
+	if err != nil {
+		return errors.New("could not truncate the seesion store")
+	}
 	return nil
 }
