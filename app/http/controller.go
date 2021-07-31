@@ -2,9 +2,10 @@ package http
 
 import (
 	"encoding/json"
-	"goss/app/service"
-	"goss/app/utils"
 	"net/http"
+
+	"github.com/himanshu-sah/goss/app/service"
+	"github.com/himanshu-sah/goss/app/utils"
 
 	"github.com/labstack/echo/v4"
 )
