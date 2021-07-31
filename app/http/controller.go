@@ -73,3 +73,10 @@ func DeleteSession(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, GenerateGeneralResponse(http.StatusOK, "Session Deleted Successfully"))
 }
+func TruncateStore(c echo.Context) error {
+	err := service.TruncateStore()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, GenerateGeneralResponse(http.StatusInternalServerError, err.Error()))
+	}
+	return c.JSON(http.StatusOK, GenerateGeneralResponse(http.StatusOK, "truncated session store"))
+}

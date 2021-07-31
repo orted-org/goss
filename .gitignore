@@ -3,4 +3,4 @@
 tmp/
 bin/
 .DS_Store
-app/tmp/
+**/tmp/
