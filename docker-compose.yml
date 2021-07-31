@@ -8,7 +8,5 @@ services:
       - "1211:1211"
     depends_on:
       - goss_redis
-    environment:
-      - REDIS_URL=redis:6379
   goss_redis:
     image: redis
