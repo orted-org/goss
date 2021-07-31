@@ -10,7 +10,7 @@ import (
 )
 
 func createRandomSession(session string, t *testing.T) string {
-	sessionId, err := CreateSession(session, time.Second*5)
+	sessionId, err := CreateSession(session, time.Second*500)
 	require.NoError(t, err)
 	require.NotEmpty(t, sessionId)
 	return sessionId
